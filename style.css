@@ -1,0 +1,75 @@
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0;
+}
+
+html {
+	font-family: Helvetica, sans-serif;
+	color: #000d;
+}
+
+nav {
+	view-transition-name: navegation;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+
+	height: 60px;
+	border-bottom: 1px solid #0002;
+
+	a {
+		font-weight: 600;
+		text-decoration: none;
+
+		color: inherit;
+	}
+}
+
+main {
+	display: flex;
+	flex-flow: column;
+	gap: 10px;
+
+	padding: 20px max(50px, 10%);
+
+	p {
+		height: 3rem;
+	}
+
+	img {
+		margin: 20px 0px;
+
+		width: min(800px, 100%);
+		aspect-ratio: 16/9;
+		object-fit: cover;
+
+		border-radius: 10px;
+	}
+}
+
+::view-transition-group(*) {
+	animation-duration: 1s;
+}
+
+@keyframes slide-from-right {
+	from {
+		transform: translateX(100vw);
+	}
+}
+
+@keyframes slide-to-left {
+	to {
+		transform: translateX(-100vw);
+	}
+}
+
+::view-transition-old(root) {
+	animation: 300ms ease-in both slide-to-left;
+}
+
+::view-transition-new(root) {
+	animation: 300ms ease-out both slide-from-right;
+}
